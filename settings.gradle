@@ -1,0 +1,3 @@
+rootProject.name = 'americano'
+
+include 'americano-api','americano-common','americano-web','americano-batch','americano-admin'

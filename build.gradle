@@ -1,0 +1,73 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.6.RELEASE'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:0.6.0.REALEASE")
+    }
+}
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    group 'com.americano'
+    version '0.0.1'
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+    task initSourceFolders {
+        sourceSets*.java.srcDirs*.each {
+            if( !it.exists() ) {
+                it.mkdirs()
+            }
+        }
+
+        sourceSets*.resources.srcDirs*.each {
+            if( !it.exists() ) {
+                it.mkdirs()
+            }
+        }
+    }
+
+    dependencies {
+        compileOnly('org.projectlombok:lombok')
+    }
+}
+
+project(':americano-api') {
+    dependencies {
+        compile project(':americano-common')
+    }
+}
+
+project(':americano-web') {
+    dependencies {
+        compile project(':americano-common')
+    }
+}
+
+project(':americano-batch') {
+    dependencies {
+        compile project(':americano-common')
+    }
+}
+
+project(':americano-admin') {
+    dependencies {
+        compile project(':americano-common')
+    }
+}
+
+
+
+
