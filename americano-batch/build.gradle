@@ -1,3 +1,8 @@
 dependencies {
     compile project(':americano-common')
+
+    compileOnly('org.projectlombok:lombok:1.18.4')
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-devtools')
 }
