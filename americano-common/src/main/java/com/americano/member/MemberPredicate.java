@@ -1,6 +1,5 @@
 package com.americano.member;
 
-import com.americano.entity.QMember;
 import com.americano.member.type.Status;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Predicate;

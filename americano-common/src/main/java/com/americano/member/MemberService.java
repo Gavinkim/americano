@@ -1,11 +1,7 @@
 package com.americano.member;
 
-import com.americano.member.type.Sex;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by gavinkim at 2019-03-17
