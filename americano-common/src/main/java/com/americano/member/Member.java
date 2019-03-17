@@ -1,18 +1,22 @@
-package com.americano.entity;
+package com.americano.member;
 
+import com.americano.member.type.Sex;
+import com.americano.member.type.Status;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by gavinkim at 2019-03-17
  */
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(exclude = "password")
-public class Member {
+public class Member implements Serializable {
+
+    private static final long serialVersionUID = -3777937205433558441L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +35,20 @@ public class Member {
     @Column(name = "PASSWORD",nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "SEX")
+    private Sex sex;
+
+    @Column(name = "STATUS")
+    private Status status;
+
     @Builder
-    public Member(String firstName, String lastName, String email, String password) {
+    public Member(String firstName, String lastName, String email, String password,Sex sex,Status status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.sex = sex;
+        this.status = status;
     }
 }
